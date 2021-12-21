@@ -1,0 +1,212 @@
+@media (max-width: $breakpoint-sm) {
+  section.benefits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 170vh;
+    background-color: #F7F7F7;
+    width: calc(100vw - (100vw - 100%));
+    margin: 0 auto;
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+      max-width: 95%;
+      height: 230vh;
+      article {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        width: 100%;
+        height: 25%;
+        .box__text {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          width: 90%;
+          margin: 0 4% 0 4%;
+
+          h1 {
+            font-family: Raleway;
+            font-size: 4vh;
+            padding: 0 4% 4% 0;
+          }
+
+          p {
+            font-family: "Open Sans";
+            font-size: 3.5vh;
+            font-weight: lighter;
+            padding-bottom: 4vh;
+          }
+        }
+
+        .box__graphics {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 60%;
+          height: 100%;
+
+          img {
+            width: 80%;
+            z-index: 1;
+          }
+          .wrapper__square {
+              transform: translateX(-80%);
+          }
+          .square {
+            width: 65px;
+            height: 65px;
+            background-color: $color-pink;
+            border-radius: 20%;
+            transform: translate(-8%, -10%) rotate(45deg);
+          }
+        }
+      }
+    }
+    article + article {
+      &:nth-of-type(2) {
+        flex-direction: column;
+      }
+      &:nth-of-type(3) {
+      .box__text h1 {
+        padding-top: 3vh;
+      }
+        .box__graphics {
+          width: 100%;
+          img {
+            transform: translateY(10%);
+          }
+        }
+      }
+      &:nth-of-type(2) .box__graphics {
+        width: 50%;
+        background-image: radial-gradient(#07ACE6, white, white);
+      }
+
+      .box__graphics {
+        background-color: $color-lightgreen;
+        width: 40%;
+      }
+    }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: $breakpoint-sm) {
+  section.benefits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 170vh;
+    background-color: #F7F7F7;
+    width: calc(100vw - (100vw - 100%));
+    margin: 0 auto;
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+      max-width: 60%;
+      height: 170vh;
+
+      article {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        width: 100%;
+        height: 25%;
+        .box__text {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          width: 50%;
+          margin: 0 4% 0 4%;
+
+          h1 {
+            font-family: Raleway;
+            font-size: 4vh;
+            padding: 0 4% 4% 0;
+          }
+
+          p {
+            font-family: "Open Sans";
+            font-size: 2.5vh;
+          }
+          p::after {
+            display: block;
+            margin-top: 4vh;
+            content: '';
+            width: 70%;
+            height: 0.45vh;
+            background: $color-pink;
+          }
+        }
+
+        .box__graphics {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 50%;
+          height: 100%;
+
+          img {
+            width: 70%;
+            z-index: 1;
+          }
+
+          .square {
+            width: 100px;
+            height: 100px;
+            background-color: $color-pink;
+            border-radius: 20%;
+            transform: translate(-90%, -30%) rotate(45deg);
+          }
+        }
+
+        &:nth-of-type(2) .box__text p::after {
+          background-color: $color-primary;
+        }
+
+        &:nth-of-type(3) .box__text p::after {
+          background-color: $color-lightgreen;
+        }
+      }
+    }
+
+    article + article {
+      &:nth-of-type(2) .box__graphics {
+        background-image: radial-gradient(#07ACE6, white, white);
+      }
+
+      .box__graphics {
+        background-color: $color-lightgreen;
+        width: 40%;
+      }
+    }
+  }
+
+  .hole {
+    width: 10%;
+    height: 100%;
+    background-color: #F7F7F7;
+  }
+}
+

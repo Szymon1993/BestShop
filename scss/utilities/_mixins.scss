@@ -1,0 +1,12 @@
+@mixin btn ($bg-color, $width) {
+  display: inline-block;
+  width: $width;
+  height: 8vh;
+  line-height: 8vh;
+  border-radius: 23px;
+  text-align: center;
+  text-decoration: none;
+  background-color: $bg-color;
+  font-family: "Open Sans";
+  color: white;
+}
