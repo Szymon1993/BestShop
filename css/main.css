@@ -1056,7 +1056,7 @@ html {
     top: 100%;
     left: 50%;
     transform: translate(-50%, -40%);
-    width: 25%;
+    width: 30%;
     background-color: #FB3B64;
     text-align: center;
     height: 1.5rem;
@@ -1282,6 +1282,27 @@ html {
 }
 .calc .form__checkbox {
   display: flex;
+}
+.calc .form__checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+}
+.calc .form__checkbox span {
+  height: 2.5vh;
+  width: 2.5vh;
+  flex-shrink: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  margin-right: 15px;
+  border-radius: 3px;
+}
+.calc .form__checkbox input:checked + span {
+  background-image: url("assets/Checkmark.svg");
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center;
 }
 .calc .form__checkbox .consent__text {
   color: #a5a5a5;
@@ -1548,7 +1569,6 @@ html {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 0;
     width: 0;
   }
   section.questions .container form .checkbox span {

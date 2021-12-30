@@ -10,3 +10,10 @@
   font-family: "Open Sans";
   color: white;
 }
+
+@mixin inputForm () {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+}

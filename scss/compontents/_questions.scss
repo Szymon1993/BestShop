@@ -228,11 +228,7 @@
           color: #707070;
           font-size: 2vh;
           input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
+@include inputForm
           }
           span {
             height: 3vh;

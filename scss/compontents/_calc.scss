@@ -68,7 +68,6 @@
 
     .select__input {
       position: relative;
-      //height: 40px;
       vertical-align: middle;
       padding: 13px 20px;
       cursor: pointer;
@@ -120,6 +119,24 @@
 
   .form__checkbox {
     display: flex;
+    input {
+    @include inputForm
+    }
+    span {
+      height: 2.5vh;
+      width: 2.5vh;
+      flex-shrink: 0;
+      border: 1px solid black;
+      cursor: pointer;
+      margin-right: 15px;
+      border-radius: 3px;
+    }
+    input:checked + span {
+      background-image: url("assets/Checkmark.svg");
+      background-repeat: no-repeat;
+      background-size: 70%;
+      background-position: center;
+    }
     .consent__text {
       color: #a5a5a5;
       margin-left: 2rem;
@@ -169,7 +186,6 @@
 
     .list__item {
       padding: 6px 20px;
-      //width: 80%;
       background-color: $color-green;
       margin-bottom: 8px;
 

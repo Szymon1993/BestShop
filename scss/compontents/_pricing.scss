@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "sass:map";
+
 @media (max-width: $breakpoint-sm) {
   section.pricing {
     height: 110vh;
@@ -58,16 +61,10 @@
         border: 1px solid #55DFB4;
       }
 
-      &:nth-of-type(1) h3 {
-        color: #FB3B64;
-      }
-
-      &:nth-of-type(2) h3 {
-        color: #07ACE6;
-      }
-
-      &:nth-of-type(3) h3 {
-        color: #55DFB4;
+      @for $i from 1 through 3 {
+        &:nth-of-type(#{$i}) h3 {
+          color: nth($list__colors, $i);
+        }
       }
 
       ul li {
@@ -91,7 +88,7 @@
       top: 100%;
       left: 50%;
       transform: translate(-50%, -40%);
-      width: 25%;
+      width: 30%;
       background-color: #FB3B64;
       text-align: center;
       height: 1.5rem;
@@ -193,16 +190,11 @@
         border: 1px solid #55DFB4;
       }
 
-      &:nth-of-type(1) h3 {
-        color: #FB3B64;
-      }
 
-      &:nth-of-type(2) h3 {
-        color: #07ACE6;
-      }
-
-      &:nth-of-type(3) h3 {
-        color: #55DFB4;
+      @for $i from 1 through 3 {
+        &:nth-of-type(#{$i}) h3 {
+          color: nth($list__colors, $i);
+        }
       }
 
       ul li {
