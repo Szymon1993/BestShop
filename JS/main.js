@@ -19,41 +19,20 @@ function Calculator (form, summary) {
         total: {container: summary.querySelector("#total-price"), price: summary.querySelector(".total__price")
         }
     }
+
+   this.addEvents = function () {
+        this.form.products.addEventListener("change", this.inputEvent.bind(this));
+        this.form.products.addEventListener("keyup", this.inputEvent.bind(this));
+
+        this.form.orders.addEventListener("change", this.inputEvent.bind(this));
+        this.form.orders.addEventListener("keyup", this.inputEvent.bind(this));
+
+        this.form.package.addEventListener("click", this.selectEvent.bind(this));
+
+        this.form.accounting.addEventListener("change", this.checkboxEvent.bind(this));
+        this.form.terminal.addEventListener("change", this.checkboxEvent.bind(this));
+    };
     this.addEvents()
-}
-
-Calculator.prototype.addEvents = function () {
-    this.form.products.addEventListener("change", this.inputEvent.bind(this));
-    this.form.products.addEventListener("keyup", this.inputEvent.bind(this));
-    this.form.orders.addEventListener("change", this.inputEvent.bind(this));
-    this.form.orders.addEventListener("keyup", this.inputEvent.bind(this));
-
-    this.form.package.addEventListener("click", this.selectEvent.bind(this));
-
-    this.form.accounting.addEventListener("change", this.checkboxEvent.bind(this));
-    this.form.terminal.addEventListener("change", this.checkboxEvent.bind(this));
-};
-
-
-
-Calculator.prototype.inputEvent = function (event) {
-    const id = event.currentTarget.id;
-    const value = event.currentTarget.value;
-
-    const singlePrice = this.prices[id];
-    const totalPrice = value * singlePrice;
-
-    this.updateSummary(id, value + " * $" + singlePrice, totalPrice, function (item, calc, total) {
-        if (value < 0) {
-            calc.innerHTML = null;
-            total.innerText = "Value should be greater than 0";
-        }
-
-        if (value.length === 0) {
-            item.classList.remove("open");
-        }
-    });
-this.updateTotal()
 }
 
 Calculator.prototype.updateSummary = function (id, calc, total, callback) {
@@ -75,10 +54,42 @@ Calculator.prototype.updateSummary = function (id, calc, total, callback) {
 
 };
 
+
+
+
+Calculator.prototype.inputEvent = function (event) {
+    const id = event.currentTarget.id;
+    const value = event.currentTarget.value;
+
+    const singlePrice = this.prices[id];
+    const totalPrice = value * singlePrice;
+console.log(this.prices[event.currentTarget.id])
+
+    this.updateSummary(id, value + " * $" + singlePrice, totalPrice, function (item, calc, total) {
+        if (value < 0) {
+            calc.innerHTML = null;
+            total.innerText = "Value should be greater than 0";
+        }
+        if (value.length === 0) {
+            item.classList.remove("open");
+        }
+    });
+    this.updateTotal()
+}
+
+
+
 Calculator.prototype.selectEvent = function (event) {
     this.form.package.classList.toggle("open");
 
-    const value = typeof event.target.dataset.value !== "undefined" ? event.target.dataset.value : "";
+    let value;
+
+    if (typeof event.target.dataset.value !== "undefined") {
+        value = event.target.dataset.value
+    }
+    else {value = ""}
+
+
     const text = typeof event.target.dataset.value !== "undefined" ? event.target.innerText : "Choose package";
 
     if (value.length > 0) {
@@ -109,7 +120,14 @@ Calculator.prototype.updateTotal = function () {
     const show = this.summary.list.querySelectorAll(".open").length > 0;
 
     if (show) {
-        const productSum = this.form.products.value < 0 ? 0 : this.form.products.value * this.prices.products;
+        let productSum;
+        if (this.form.products.value < 0) {
+            productSum = 0;
+        }
+        else {
+            productSum = this.form.products.value * this.prices.products
+        }
+        
         const ordersSum = this.form.orders.value < 0 ? 0 : this.form.orders.value * this.prices.orders;
         const packagePrice = this.form.package.dataset.value.length === 0 ? 0 : this.prices.package[this.form.package.dataset.value];
         const accounting = this.form.accounting.checked ? this.prices.accounting : 0;
